@@ -27,8 +27,10 @@ win_cc_library(
     name = "launcher_base",
     srcs = ["launcher.cc"],
     hdrs = ["launcher.h"],
+    visibility = ["//visibility:public"],
     deps = [
         "//src/main/cpp/util:filesystem",
+        "//src/main/native/windows:lib-process",
         "//src/tools/launcher/util",
         "//src/tools/launcher/util:data_parser",
     ],
@@ -40,7 +42,6 @@ win_cc_library(
     hdrs = ["java_launcher.h"],
     deps = [
         ":launcher_base",
-        "//src/main/native/windows:lib-process",
     ],
 )
 
@@ -50,7 +51,6 @@ win_cc_library(
     hdrs = ["python_launcher.h"],
     deps = [
         ":launcher_base",
-        "//src/main/native/windows:lib-process",
     ],
 )
 

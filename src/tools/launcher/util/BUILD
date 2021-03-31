@@ -12,6 +12,7 @@ win_cc_library(
     name = "data_parser",
     srcs = ["data_parser.cc"],
     hdrs = ["data_parser.h"],
+    visibility = ["//visibility:public"],
     deps = [":util"],
 )
 
@@ -19,6 +20,7 @@ win_cc_library(
     name = "util",
     srcs = ["launcher_util.cc"],
     hdrs = ["launcher_util.h"],
+    visibility = ["//visibility:public"],
     deps = ["//src/main/cpp/util:filesystem"],
 )
 

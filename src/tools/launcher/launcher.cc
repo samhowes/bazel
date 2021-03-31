@@ -28,6 +28,7 @@
 
 #include "src/main/cpp/util/path_platform.h"
 #include "src/main/cpp/util/strings.h"
+#include "src/main/native/windows/process.h"
 #include "src/tools/launcher/util/data_parser.h"
 #include "src/tools/launcher/util/launcher_util.h"
 
@@ -219,6 +220,10 @@ bool BinaryLauncherBase::PrintLauncherCommandLine(
     }
   }
   return has_print_cmd_flag;
+}
+
+std::wstring BinaryLauncherBase::EscapeArg(const std::wstring& s) {
+  return bazel::windows::WindowsEscapeArg(s);
 }
 
 ExitCode BinaryLauncherBase::LaunchProcess(const wstring& executable,

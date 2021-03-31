@@ -62,6 +62,9 @@ class BinaryLauncherBase {
   std::wstring Rlocation(std::wstring path,
                          bool has_workspace_name = false) const;
 
+  // Escape a command line argument for use LaunchProcess.
+  std::wstring BinaryLauncherBase::EscapeArg(const std::wstring& arg);
+
   // Lauch a process with given executable and command line arguments.
   // If --print_launcher_command exists in arguments, then we print the full
   // command line instead of launching the real process.
@@ -70,6 +73,7 @@ class BinaryLauncherBase {
   // arguments:  the command line arguments to be passed to the executable,
   //             it doesn't include the executable itself.
   //             The arguments are expected to be quoted if having spaces.
+  //             EscapeArg can be used for proper escaping.
   ExitCode LaunchProcess(const std::wstring& executable,
                          const std::vector<std::wstring>& arguments,
                          bool suppressOutput = false) const;

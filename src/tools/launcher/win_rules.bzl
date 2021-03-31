@@ -22,15 +22,15 @@ def win_cc_library(srcs = [], deps = [], hdrs = [], **kwargs):
     native.cc_library(
         srcs = select({
             "//conditions:default": ["dummy.cc"],
-            "//src/conditions:windows": srcs,
+            "@bazel_tools//src/conditions:windows": srcs,
         }),
         hdrs = select({
             "//conditions:default": [],
-            "//src/conditions:windows": hdrs,
+            "@bazel_tools//src/conditions:windows": hdrs,
         }),
         deps = select({
             "//conditions:default": [],
-            "//src/conditions:windows": deps,
+            "@bazel_tools//src/conditions:windows": deps,
         }),
         **kwargs
     )
@@ -40,11 +40,11 @@ def win_cc_binary(srcs = [], deps = [], **kwargs):
     native.cc_binary(
         srcs = select({
             "//conditions:default": ["dummy.cc"],
-            "//src/conditions:windows": srcs,
+            "@bazel_tools//src/conditions:windows": srcs,
         }),
         deps = select({
             "//conditions:default": [],
-            "//src/conditions:windows": deps,
+            "@bazel_tools//src/conditions:windows": deps,
         }),
         **kwargs
     )
@@ -54,11 +54,11 @@ def win_cc_test(srcs = [], deps = [], **kwargs):
     native.cc_test(
         srcs = select({
             "//conditions:default": ["dummy.cc"],
-            "//src/conditions:windows": srcs,
+            "@bazel_tools//src/conditions:windows": srcs,
         }),
         deps = select({
             "//conditions:default": [],
-            "//src/conditions:windows": deps,
+            "@bazel_tools//src/conditions:windows": deps,
         }),
         **kwargs
     )
